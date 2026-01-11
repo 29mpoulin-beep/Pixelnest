@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play Game Launcher</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 15px;
+    }
+
+    textarea {
+      flex: 1;
+      width: 100%;
+      background: #111;
+      color: #0f0;
+      border: none;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      resize: none;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      background: #ffcc00;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffaa00;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Paste Your HTML Game Below</h1>
+
+  <!-- Make textarea readonly -->
+  <textarea id="gameCode" placeholder="Paste your full HTML game code here..." readonly>here</textarea>
+
+  <button onclick="playGame()">▶ Play Game</button>
+
+  <script>
+    function playGame() {
+      const code = document.getElementById("gameCode").value;
+      if (!code.trim()) {
+        alert("Paste your game HTML first!");
+        return;
+      }
+
+      const gameWindow = window.open("", "_blank");
+      gameWindow.document.open();
+      gameWindow.document.write(code);
+      gameWindow.document.close();
+    }
+  </script>
+
+</body>
+</html>
